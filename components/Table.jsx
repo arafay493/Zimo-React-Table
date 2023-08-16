@@ -55,24 +55,20 @@ const Table = () => {
       cell: ({ row }) => {
         let source =
           row.original.payment === "Visa"
-            ? "/images/visa.png"
+            ? "/assets/visa.png"
             : row.original.payment === "Paypal"
-            ? "/images/paypal.png"
+            ? "/assets/paypal.png"
             : row.original.payment === "Mastercard"
-            ? "/images/master.png"
+            ? "/assets/master.png"
             : row.original.payment === "Googlepay"
-            ? "/images/gpay.png"
+            ? "/assets/gpay.png"
             : row.original.payment === "American Express"
-            ? "/images/american_express.png"
-            : "/images/ipay.png";
+            ? "/assets/american_express.png"
+            : "/assets/ipay.png";
         return (
           <div className="flex items-center gap-2">
             <div className="w-[44px] flex justify-end">
-              <img
-                src={source}
-                alt={row.original.payment}
-                className="h-auto"
-              />
+              <img src={source} alt={row.original.payment} className="h-auto" />
             </div>{" "}
             <span className="">{row.original.cvc}</span>
           </div>
@@ -88,12 +84,9 @@ const Table = () => {
       accessorKey: "payment_amount",
       cell: ({ row }) => {
         return (
-          <div className="flex items-center justify-center gap-2">
-            <span className="flex-1 text-end">{row.original.payment_amount}</span>
-            {" "}
-            <span className="flex-1">
-              GBP
-            </span>
+          <div className="flex items-center ml-[18px]">
+            <span className="min-w-[80px]">{row.original.payment_amount}</span>{" "}
+            <span className="">GBP</span>
           </div>
         );
       },
@@ -147,9 +140,9 @@ const Table = () => {
     );
   }
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col tracking-[2px] relative z-50">
       <div className="flex-1 p-[50px] 2xl:p-[100px]">
-        <div>
+        <div className="mb-5">
           <h2 className="text-[25px] text-[#BE9F56] mb-2">Purchase History</h2>
           <p className="text-[18px]">
             In the purchase history section, you can review and manage all your
@@ -158,7 +151,7 @@ const Table = () => {
         </div>
         <div className="overflow-auto">
           <table className="mt-4 w-full">
-            <thead className="border-b-2 border-black">
+            <thead className="border-b-[1.5px] border-black">
               {table.getHeaderGroups().map((headerGroup) => {
                 return (
                   <tr key={headerGroup.id}>
@@ -166,7 +159,7 @@ const Table = () => {
                       return (
                         <th
                           key={header.id}
-                          className="py-3 text-center text-sm cursor-pointer select-none"
+                          className="py-3 text-sm cursor-pointer select-none"
                           onClick={header.column.getToggleSortingHandler()}
                         >
                           <span className="flex items-center gap-2">
@@ -197,7 +190,7 @@ const Table = () => {
                   {row.getVisibleCells().map((cell) => (
                     <td
                       key={cell.id}
-                      className="text-start text-sm  min-w-[160px] py-[20px]"
+                      className="text-start text-sm  min-w-[170px] py-[20px]"
                     >
                       {flexRender(
                         cell.column.columnDef.cell,
@@ -211,7 +204,7 @@ const Table = () => {
           </table>
         </div>
       </div>
-      <div className="text-md flex justify-end gap-6 me-[25px] 2xl:me-[100px] mb-[50px]  2xl:mb-[100px] select-none">
+      <div className="text-md flex justify-end gap-6 me-[30px] 2xl:me-[100px] mb-[40px] select-none">
         {table.getCanPreviousPage() && (
           <button
             disabled={!table.getCanPreviousPage()}

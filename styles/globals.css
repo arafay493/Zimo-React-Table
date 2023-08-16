@@ -30,7 +30,7 @@ html {
 
 thead th {
   color: #BE9F56;
-  text-align: start !important;
+  text-align: center !important;
 }
 
 .pagination_active{
